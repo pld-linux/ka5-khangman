@@ -1,14 +1,14 @@
-%define		kdeappsver	18.12.0
+%define		kdeappsver	18.12.1
 %define		qtver		5.9.0
 %define		kaname		khangman
 Summary:	khangman
 Name:		ka5-%{kaname}
-Version:	18.12.0
+Version:	18.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	4fc3dc566d2869f93ce561f88644bb87
+# Source0-md5:	65e6f414ae578e2fe63fc8e16969358a
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -19,7 +19,7 @@ BuildRequires:	Qt5Svg-devel
 BuildRequires:	Qt5Widgets-devel >= 5.11.1
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
-BuildRequires:	ka5-libkdegames-devel >= 18.12.0
+BuildRequires:	ka5-libkdegames-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkeduvocdocument-devel
 BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
 BuildRequires:	kf5-kcompletion-devel >= 5.15.0
@@ -34,6 +34,7 @@ BuildRequires:	kf5-kio-devel >= 5.15.0
 BuildRequires:	kf5-knewstuff-devel >= 5.15.0
 BuildRequires:	kf5-knotifications-devel >= 5.15.0
 BuildRequires:	kf5-kxmlgui-devel >= 5.15.0
+BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
@@ -54,14 +55,14 @@ answer is displayed.
 install -d build
 cd build
 %cmake \
+	-G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
-%{__make}
+%ninja_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} -C build install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{kaname} --all-name --with-kde
 
