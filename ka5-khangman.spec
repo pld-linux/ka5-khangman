@@ -1,14 +1,15 @@
-%define		kdeappsver	18.12.1
+%define		kdeappsver	19.04.1
+%define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		khangman
 Summary:	khangman
 Name:		ka5-%{kaname}
-Version:	18.12.1
+Version:	19.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	65e6f414ae578e2fe63fc8e16969358a
+# Source0-md5:	09f8de489d8b79b89f3404594378c3c0
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -20,20 +21,20 @@ BuildRequires:	Qt5Widgets-devel >= 5.11.1
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-libkdegames-devel >= %{kdeappsver}
-BuildRequires:	ka5-libkeduvocdocument-devel
-BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
-BuildRequires:	kf5-kcompletion-devel >= 5.15.0
-BuildRequires:	kf5-kconfig-devel >= 5.15.0
-BuildRequires:	kf5-kconfigwidgets-devel >= 5.15.0
-BuildRequires:	kf5-kcoreaddons-devel >= 5.15.0
-BuildRequires:	kf5-kcrash-devel >= 5.15.0
-BuildRequires:	kf5-kdeclarative-devel >= 5.15.0
-BuildRequires:	kf5-kdoctools-devel >= 5.15.0
-BuildRequires:	kf5-ki18n-devel >= 5.15.0
-BuildRequires:	kf5-kio-devel >= 5.15.0
-BuildRequires:	kf5-knewstuff-devel >= 5.15.0
-BuildRequires:	kf5-knotifications-devel >= 5.15.0
-BuildRequires:	kf5-kxmlgui-devel >= 5.15.0
+BuildRequires:	ka5-libkeduvocdocument-devel >= %{kdeappsver}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcompletion-devel >= %{kframever}
+BuildRequires:	kf5-kconfig-devel >= %{kframever}
+BuildRequires:	kf5-kconfigwidgets-devel >= %{kframever}
+BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf5-kcrash-devel >= %{kframever}
+BuildRequires:	kf5-kdeclarative-devel >= %{kframever}
+BuildRequires:	kf5-kdoctools-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-knewstuff-devel >= %{kframever}
+BuildRequires:	kf5-knotifications-devel >= %{kframever}
+BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -56,6 +57,7 @@ install -d build
 cd build
 %cmake \
 	-G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
 %ninja_build
@@ -92,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(nl) %{_mandir}/nl/man6/khangman.6*
 %lang(pt) %{_mandir}/pt/man6/khangman.6*
 %lang(pt_BR) %{_mandir}/pt_BR/man6/khangman.6*
+%lang(ru) %{_mandir}/ru/man6/khangman.6*
 %lang(sv) %{_mandir}/sv/man6/khangman.6*
 %lang(uk) %{_mandir}/uk/man6/khangman.6*
 %{_datadir}/metainfo/org.kde.khangman.appdata.xml
