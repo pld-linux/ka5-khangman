@@ -1,15 +1,15 @@
-%define		kdeappsver	20.12.3
+%define		kdeappsver	21.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		khangman
 Summary:	khangman
 Name:		ka5-%{kaname}
-Version:	20.12.3
+Version:	21.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	2fc90c77798f6987172f78b8868b5cf9
+# Source0-md5:	aef734150f394811496f970954dd3dbd
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -97,4 +97,5 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ru) %{_mandir}/ru/man6/khangman.6*
 %lang(sv) %{_mandir}/sv/man6/khangman.6*
 %lang(uk) %{_mandir}/uk/man6/khangman.6*
+%lang(fr) %{_mandir}/fr/man6/khangman.6*
 %{_datadir}/metainfo/org.kde.khangman.appdata.xml
