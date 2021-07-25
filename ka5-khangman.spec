@@ -49,6 +49,12 @@ letter by letter. At each miss, the picture of a hangman appears.
 After 10 tries, if the word is not guessed, the game is over and the
 answer is displayed.
 
+%description -l pl.UTF-8
+KHangMan to klasyczna gra w wisielca. Dziecko ma odgadnąć słowo,
+literka po literce. Przy każdym pudle jest rysowane fragment obrazka
+wisielca. Po 10 próbach, jeśli słowo nie zostało odgadnięte, gra się
+kończy i wyświetlana jest prawidłowa odpowiedź.
+
 %prep
 %setup -q -n %{kaname}-%{version}
 
