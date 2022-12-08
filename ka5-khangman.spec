@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.08.3
+%define		kdeappsver	22.12.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		khangman
 Summary:	khangman
 Name:		ka5-%{kaname}
-Version:	22.08.3
+Version:	22.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	274eb0cff98770df84c6c9e0eee7a3c7
+# Source0-md5:	f326c31277b0409a5c67f8197804c8a0
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
