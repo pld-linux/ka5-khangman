@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.0
+%define		kdeappsver	23.08.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		khangman
 Summary:	khangman
 Name:		ka5-%{kaname}
-Version:	23.08.0
+Version:	23.08.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	cc6a7930d8e7965fb0e50194ece34e10
+# Source0-md5:	b7809ad1d509b2723b956acb42a6a6d5
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -44,6 +44,7 @@ BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	%{name}-data = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,6 +58,19 @@ KHangMan to klasyczna gra w wisielca. Dziecko ma odgadnąć słowo,
 literka po literce. Przy każdym pudle jest rysowane fragment obrazka
 wisielca. Po 10 próbach, jeśli słowo nie zostało odgadnięte, gra się
 kończy i wyświetlana jest prawidłowa odpowiedź.
+
+%package data
+Summary:	Data files for %{kaname}
+Summary(pl.UTF-8):	Dane dla %{kaname}
+Group:		X11/Applications/Games
+BuildArch:	noarch
+
+%description data
+Data files for %{kaname}.
+
+%description data -l pl.UTF-8
+Dane dla %{kaname}.
+
 
 %prep
 %setup -q -n %{kaname}-%{version}
@@ -84,10 +98,13 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{kaname}.lang
+%files
 %defattr(644,root,root,755)
 /etc/xdg/khangman.knsrc
 %attr(755,root,root) %{_bindir}/khangman
+
+%files data  -f %{kaname}.lang
+%defattr(644,root,root,755)
 %{_desktopdir}/org.kde.khangman.desktop
 %{_datadir}/config.kcfg/khangman.kcfg
 %{_iconsdir}/hicolor/128x128/apps/khangman.png
